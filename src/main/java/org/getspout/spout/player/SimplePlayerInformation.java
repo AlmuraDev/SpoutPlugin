@@ -96,9 +96,18 @@ public class SimplePlayerInformation implements PlayerInformation {
 	public void setEntitySkin(LivingEntity entity, String url) {
 		setEntitySkin(entity, url, EntitySkinType.DEFAULT);
 	}
-
+	
 	@Override
+	public void setEntitySkin(LivingEntity entity, String plugin, String url) {
+		setEntitySkin(entity, url, EntitySkinType.DEFAULT);
+	}
+	
 	public void setEntitySkin(LivingEntity entity, String url, EntitySkinType type) {
+		setEntitySkin(entity, null, url, type);
+	}
+	
+	@Override
+	public void setEntitySkin(LivingEntity entity, String plugin, String url, EntitySkinType type) {
 		SpoutEntitySkin textures = getTextureObject(entity);
 		if (url == null) {
 			textures.reset();

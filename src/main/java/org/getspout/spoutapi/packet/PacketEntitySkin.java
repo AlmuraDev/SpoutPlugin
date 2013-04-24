@@ -28,11 +28,13 @@ import org.getspout.spoutapi.io.SpoutOutputStream;
 
 public class PacketEntitySkin implements SpoutPacket {
 	protected String texture = "";
+	protected String plugin = "";
 	protected int entityId;
 	protected byte textureId = 0;
 
-	public PacketEntitySkin(Entity entity, String texture, byte type) {
+	public PacketEntitySkin(Entity entity, String plugin, String texture, byte type) {
 		this.entityId = entity.getEntityId();
+		this.plugin = plugin;
 		this.texture = texture;
 		this.textureId = type;
 	}
@@ -41,6 +43,7 @@ public class PacketEntitySkin implements SpoutPacket {
 	public void readData(SpoutInputStream input) throws IOException {
 		entityId = input.readInt();
 		textureId = (byte) input.read();
+		plugin = input.readString();
 		texture = input.readString();
 	}
 
@@ -48,6 +51,7 @@ public class PacketEntitySkin implements SpoutPacket {
 	public void writeData(SpoutOutputStream output) throws IOException {
 		output.writeInt(entityId);
 		output.write(textureId);
+		output.writeString(plugin);
 		output.writeString(texture);
 	}
 
@@ -66,6 +70,6 @@ public class PacketEntitySkin implements SpoutPacket {
 
 	@Override
 	public int getVersion() {
-		return 1;
+		return 2;
 	}
 }

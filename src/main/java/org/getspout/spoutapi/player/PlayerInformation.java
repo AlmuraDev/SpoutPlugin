@@ -46,4 +46,10 @@ public interface PlayerInformation {
 
 	@ClientOnly
 	public String getEntitySkin(LivingEntity entity, EntitySkinType type);
+	
+	@ClientOnly
+	void setEntitySkin(LivingEntity entity, String plugin, String url);
+
+	@ClientOnly
+	void setEntitySkin(LivingEntity entity, String plugin, String url, EntitySkinType type);
 }

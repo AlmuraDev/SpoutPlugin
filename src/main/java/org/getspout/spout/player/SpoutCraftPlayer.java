@@ -896,7 +896,7 @@ public class SpoutCraftPlayer extends CraftPlayer implements SpoutPlayer {
 					skin = global.getEntitySkin(le, type);
 				}
 				if (skin != null) {
-					sendDelayedPacket(new PacketEntitySkin(le, skin, type.getId()));
+					sendDelayedPacket(new PacketEntitySkin(le, null, skin, type.getId()));
 				}
 			}
 			String title = org.getspout.spoutapi.Spout.getServer().getTitle(le);
@@ -919,8 +919,7 @@ public class SpoutCraftPlayer extends CraftPlayer implements SpoutPlayer {
 				skin = global.getEntitySkin(entity, type);
 			}
 			if (skin != null) {
-				sendDelayedPacket(new PacketEntitySkin(entity, skin,
-							type.getId()));
+				sendDelayedPacket(new PacketEntitySkin(entity, null, skin, type.getId()));
 			}
 		}
 		String title = org.getspout.spoutapi.Spout.getServer().getTitle(entity);
@@ -1080,15 +1079,15 @@ public class SpoutCraftPlayer extends CraftPlayer implements SpoutPlayer {
 	}
 
 	@Override
-	public void setEntitySkin(LivingEntity target, String url, EntitySkinType type) {
-		getInformation().setEntitySkin(target, url, type);
-		sendDelayedPacket(new PacketEntitySkin(target, url, type.getId()));
+	public void setEntitySkin(LivingEntity target, String plugin, String url, EntitySkinType type) {
+		getInformation().setEntitySkin(target, plugin, url, type);
+		sendDelayedPacket(new PacketEntitySkin(target, plugin, url, type.getId()));
 	}
 
 	@Override
 	public void resetEntitySkin(LivingEntity target) {
 		getInformation().setEntitySkin(target, null);
-		sendPacket(new PacketEntitySkin(target, "[reset]", (byte) 0));
+		sendPacket(new PacketEntitySkin(target, null, "[reset]", (byte) 0));
 	}
 
 	/* Non-Interface public methods */
@@ -1438,5 +1437,11 @@ public class SpoutCraftPlayer extends CraftPlayer implements SpoutPlayer {
 	@Override
 	public String getAccessoryURL(AccessoryType type) {
 		return accessories.get(type);
+	}
+
+	@Override
+	public void setEntitySkin(LivingEntity target, String url, EntitySkinType type) {
+		// TODO Auto-generated method stub
+		
 	}
 }

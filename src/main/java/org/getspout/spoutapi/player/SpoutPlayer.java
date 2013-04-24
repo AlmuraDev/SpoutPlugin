@@ -854,4 +854,6 @@ public interface SpoutPlayer extends org.bukkit.entity.Player {
 	 * @return  The url.
 	 */
 	public String getAccessoryURL(AccessoryType type);
+
+	public void setEntitySkin(LivingEntity target, String plugin, String url, EntitySkinType type);
 }
