@@ -670,6 +670,14 @@ public interface SpoutPlayer extends org.bukkit.entity.Player {
 	 * @param type   of skin to set
 	 */
 	public void setEntitySkin(LivingEntity target, String url, EntitySkinType type);
+	
+	/**
+	 * Sets the entity skin for the target entity to the url. The Skin Type is used when an entity has more than one skin type.
+	 * @param target to set the skin on
+	 * @param url    of the skin
+	 * @param type   of skin to set
+	 */
+	public void setEntitySkin(LivingEntity target, String plugin, String url, EntitySkinType type);
 
 	/**
 	 * Resets the entity skin for the target entity.
@@ -854,6 +862,5 @@ public interface SpoutPlayer extends org.bukkit.entity.Player {
 	 * @return  The url.
 	 */
 	public String getAccessoryURL(AccessoryType type);
-
-	public void setEntitySkin(LivingEntity target, String plugin, String url, EntitySkinType type);
+	
 }

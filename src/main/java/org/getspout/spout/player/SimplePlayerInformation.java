@@ -99,7 +99,7 @@ public class SimplePlayerInformation implements PlayerInformation {
 	
 	@Override
 	public void setEntitySkin(LivingEntity entity, String plugin, String url) {
-		setEntitySkin(entity, url, EntitySkinType.DEFAULT);
+		setEntitySkin(entity, plugin, url, EntitySkinType.DEFAULT);
 	}
 	
 	public void setEntitySkin(LivingEntity entity, String url, EntitySkinType type) {

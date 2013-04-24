@@ -102,6 +102,22 @@ public class SpoutServer implements Server {
 			player.updateEntitySkins(entities);
 		}
 	}
+	
+	/**
+	 * Sets the entity skin for the target entity from local resources. The Skin Type is
+	 * used when an entity has more than one skin type.
+	 * @param target to set the skin on
+	 * @param url    of the skin
+	 * @param type   of skin to set
+	 */
+	public void setEntitySkin(LivingEntity target, String plugin, String url, EntitySkinType type) {
+		SpoutManager.getPlayerChunkMap().getGlobalInfo().setEntitySkin(target, plugin, url, type);
+		ArrayList<LivingEntity> entities = new ArrayList<LivingEntity>(1);
+		entities.add(target);
+		for (SpoutPlayer player : getOnlinePlayers()) {
+			player.updateEntitySkins(entities);
+		}
+	}
 
 	/**
 	 * Gets the entity skin for the target entity. The Skin Type is used when an
